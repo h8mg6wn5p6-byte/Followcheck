@@ -15,7 +15,7 @@ main{max-width:820px;margin:auto;padding:24px 16px 56px}.brand{display:flex;alig
 <section class="card hero"><h2>Confronta il tuo archivio Instagram</h2><p class="muted">Seleziona direttamente il file ZIP scaricato da Instagram. FollowCheck estrae i nomi utente, rimuove link e date e confronta ogni account seguito con tutti i follower presenti nell'archivio.</p>
 <div class="notice">🔒 <b>Elaborazione locale:</b> l'archivio viene letto in questa pagina. Non chiediamo password Instagram, non accediamo al tuo account e non inviamo il file a un server.</div>
 <label class="drop"><strong>📦 Scegli l'archivio Instagram ZIP</strong><div class="small muted">Puoi selezionare l'esportazione completa direttamente dal telefono</div><input id="zipFile" type="file" accept=".zip,application/zip"></label>
-<div class="actions"><button class="btn" id="analyze" type="button">Analizza archivio</button><button class="btn secondary" id="reset">Azzera dati</button></div><div id="status" class="status" aria-live="polite"></div>
+<div class="actions"><button class="btn" id="analyze" type="button" onclick="var s=document.getElementById('status');if(s)s.textContent='Pulsante premuto: controllo avvio analisi…'">Analizza archivio</button><button class="btn secondary" id="reset">Azzera dati</button></div><div id="status" class="status" aria-live="polite">Caricamento FollowCheck…</div>
 </section>
 <section id="results" class="hidden">
 <div class="card"><div class="sectionhead"><h2>Riepilogo</h2><span class="pill" id="archiveLabel">Archivio analizzato</span></div><div class="stats" style="margin-top:14px"><div class="stat"><b id="nFollowing">0</b><span>Account seguiti</span></div><div class="stat"><b id="nFollowers">0</b><span>Follower</span></div><div class="stat"><b id="nNonback">0</b><span>Non follow back</span></div></div><div class="bar"><i id="progress"></i></div><p class="small muted" id="progressText">0 controllati</p></div>
@@ -23,7 +23,7 @@ main{max-width:820px;margin:auto;padding:24px 16px 56px}.brand{display:flex;alig
 <div class="card"><h2 style="font-size:17px;margin-top:0">Altri dati</h2><div class="stats"><div class="stat"><b id="nMutual">0</b><span>Follow reciproci</span></div><div class="stat"><b id="nOnlyFollowers">0</b><span>Ti seguono, non li segui</span></div><div class="stat"><b id="nFiles">0</b><span>File follower letti</span></div></div><p class="small muted" id="coverage"></p></div>
 </section><p class="footer">FollowCheck · gratuito · viola e nero · i dati restano nel browser del dispositivo</p>
 </main>
-<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" onload="window.__zipLibReady=true;var s=document.getElementById('status');if(s)s.textContent='Lettore ZIP caricato. Pagina pronta.'" onerror="var s=document.getElementById('status');if(s){s.style.color='var(--danger)';s.textContent='Errore: impossibile caricare il lettore ZIP. Controlla la connessione.'}"></script>
 <script>
 const $=id=>document.getElementById(id);let data={nonback:[],mutual:[],onlyFollowers:[],following:[],followers:[],checks:{},fileCount:0};
 const norm=s=>String(s||'').trim().replace(/^@/,'').toLowerCase();
