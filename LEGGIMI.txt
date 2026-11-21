@@ -1,0 +1,27 @@
+FOLLOWCHECK - VERSIONE 1.0 (PROTOTIPO PWA)
+
+COSA FA
+- Legge direttamente lo ZIP dell'esportazione Instagram.
+- Cerca following.html e tutti i followers.html / followers_2.html ecc.
+- Estrae solo gli username dai link, ignorando date e URL.
+- Rimuove duplicati e confronta ogni account seguito con l'insieme completo dei follower.
+- Mostra i non follow back in ordine alfabetico, senza link cliccabili.
+- Permette ricerca, spunte dei profili già controllati e download TXT/CSV.
+- Salva elenco e spunte localmente nel browser tramite localStorage.
+
+PRIVACY E LIMITI
+- Non richiede password Instagram e non effettua accessi o azioni su Instagram.
+- Il file ZIP viene elaborato nel browser; non viene caricato da questo codice su un server.
+- Se si pubblica l'app su un sito HTTPS, il server ospita i file statici dell'app, non l'archivio personale.
+- I dati salvati nel browser possono essere cancellati dal sistema/browser: esportare i risultati per conservarli.
+- Il prototipo richiede un browser moderno con supporto a DecompressionStream('deflate-raw') per leggere ZIP compressi.
+- Per installazione PWA/offline, servire la cartella tramite HTTPS o localhost; aprire index.html da file può non abilitare il service worker.
+- Il controllo riguarda solo gli account inclusi nell'esportazione ricevuta e non identifica da solo chi ha effettuato un unfollow in passato.
+
+INSTALLAZIONE
+1. Pubblicare la cartella su un hosting statico HTTPS (ad esempio GitHub Pages o Netlify).
+2. Aprire il link in Safari/Chrome.
+3. Su iPhone: Condividi > Aggiungi alla schermata Home.
+4. Aprire FollowCheck e selezionare il file ZIP Instagram.
+
+Questo è un prototipo personale; prima di una distribuzione pubblica ampia è opportuno testare su più formati di esportazione Instagram e dispositivi/browser.
